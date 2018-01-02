@@ -12,11 +12,11 @@
 
 #define MIN_RETRY 1000
 
-#define REQUIRE_VERSION 70002
+#define REQUIRE_VERSION 70002 //TODO I might have to change this. https://github.com/pooler/litecoin-seeder/commit/3c64ed5ab35f597480712818a27d442100332719#diff-4ed1bfdfd26731997cfdb6c1085c6692
 
 static inline int GetRequireHeight(const bool testnet = fTestNet)
 {
-    return testnet ? 2000 : 1150000;
+    return testnet ? 2000 : 1150000; //TODO I might have t change this
 }
 
 std::string static inline ToString(const CService &ip) {
@@ -119,7 +119,7 @@ public:
   }
   int GetBanTime() const {
     if (IsGood()) return 0;
-    if (clientVersion && clientVersion < 50000) { return 604800; }
+    if (clientVersion && clientVersion < 50000) { return 604800; } //TODO I might have to change this
     if (stat1M.reliability - stat1M.weight + 1.0 < 0.15 && stat1M.count > 32) { return 30*86400; }
     if (stat1W.reliability - stat1W.weight + 1.0 < 0.10 && stat1W.count > 16) { return 7*86400; }
     if (stat1D.reliability - stat1D.weight + 1.0 < 0.05 && stat1D.count > 8) { return 1*86400; }
